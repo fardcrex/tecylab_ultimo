@@ -8,11 +8,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultLocale =
-        View.of(context).platformDispatcher.locale.languageCode;
+    //  final defaultLocale =
+    View.of(context).platformDispatcher.locale.languageCode;
     return BlocProvider(
       create: (context) => CounterCubit(
-        defaultLocale == 'es' ? Language.es : Language.en,
+        Language.es,
       ),
       child: BlocBuilder<CounterCubit, Language>(
         builder: (context, state) {
@@ -25,10 +25,7 @@ class App extends StatelessWidget {
             ),
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            locale: switch (state) {
-              Language.en => const Locale('en'),
-              Language.es => const Locale('es'),
-            },
+            locale: const Locale('en'),
             home: const CounterPage(),
           );
         },

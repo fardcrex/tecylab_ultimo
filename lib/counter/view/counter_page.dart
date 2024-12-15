@@ -30,7 +30,7 @@ class CounterView extends StatelessWidget {
           const CounterText(),
           const SizedBox(height: 8),
           Text(l10n.helloWorld),
-          Text(l10n.welcomeMessage('Flutter')),
+          /*     Text(l10n.welcomeMessage('Flutter')),
           Text(l10n.remainingItems(0)),
           Text(l10n.remainingItems(1)),
           Text(l10n.remainingItems(5)),
@@ -40,7 +40,7 @@ class CounterView extends StatelessWidget {
           Text(l10n.formattedDate(DateTime.now())),
           Text(l10n.formattedNumber(1200, 2)),
           Text(l10n.formattedNumber(1200, 2)),
-          Text(l10n.formattedNumber(324, 234234)),
+          Text(l10n.formattedNumber(324, 234234)), */
         ],
       ),
       floatingActionButton: Column(
