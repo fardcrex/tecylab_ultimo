@@ -24,8 +24,20 @@ void main() {
       counterCubit = MockCounterCubit();
     });
 
-    testWidgets('renders current count', (tester) async {
+    testWidgets('renders current es', (tester) async {
       const state = Language.es;
+      when(() => counterCubit.state).thenReturn(state);
+      await tester.pumpApp(
+        BlocProvider.value(
+          value: counterCubit,
+          child: const CounterView(),
+        ),
+      );
+      expect(find.text('$state'), findsOneWidget);
+    });
+
+    testWidgets('renders current en', (tester) async {
+      const state = Language.en;
       when(() => counterCubit.state).thenReturn(state);
       await tester.pumpApp(
         BlocProvider.value(
