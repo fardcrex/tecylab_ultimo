@@ -1,26 +1,26 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
-
+import 'package:tecylab_final/app/view/app.dart';
 import 'package:tecylab_final/counter/counter.dart';
 
 void main() {
   group('CounterCubit', () {
     test('initial state is 0', () {
-      expect(CounterCubit().state, equals(0));
+      expect(CounterCubit(Language.es).state, equals(Language.es));
     });
 
-    blocTest<CounterCubit, int>(
+    blocTest<CounterCubit, Language>(
       'emits [1] when increment is called',
-      build: CounterCubit.new,
-      act: (cubit) => cubit.increment(),
-      expect: () => [equals(1)],
+      build: () => CounterCubit(Language.es),
+      act: (cubit) => cubit.changeToEnglish(),
+      expect: () => [equals(Language.en)],
     );
 
-    blocTest<CounterCubit, int>(
+    blocTest<CounterCubit, Language>(
       'emits [-1] when decrement is called',
-      build: CounterCubit.new,
-      act: (cubit) => cubit.decrement(),
-      expect: () => [equals(-1)],
+      build: () => CounterCubit(Language.en),
+      act: (cubit) => cubit.changeToSpanish(),
+      expect: () => [equals(Language.es)],
     );
   });
 }

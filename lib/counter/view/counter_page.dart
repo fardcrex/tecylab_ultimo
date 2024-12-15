@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tecylab_final/app/view/app.dart';
 import 'package:tecylab_final/counter/counter.dart';
 import 'package:tecylab_final/l10n/l10n.dart';
 
@@ -8,7 +9,10 @@ class CounterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CounterView();
+    return BlocProvider(
+      create: (context) => CounterCubit(Language.es),
+      child: const CounterView(),
+    );
   }
 }
 
@@ -63,11 +67,10 @@ class CounterText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
     final theme = Theme.of(context);
     final count = context.select((CounterCubit cubit) => cubit.state);
     return Text(
-      '$count ${l10n.localeName}',
+      '$count',
       style: theme.textTheme.displayLarge,
     );
   }
